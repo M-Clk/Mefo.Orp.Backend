@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mefo.Orp.Backend.Api", "Mefo.Orp.Backend.Api\Mefo.Orp.Backend.Api.csproj", "{D4204010-D939-4102-AE67-843D16813163}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mefo.Orp.Backend.Services", "Mefo.Orp.Backend.Services\Mefo.Orp.Backend.Services.csproj", "{CE344F37-CDB1-4827-ABA3-753DFF186354}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mefo.Orp.Backend.Models", "Mefo.Orp.Backend.Models\Mefo.Orp.Backend.Models.csproj", "{B62897DE-7F45-4502-B6E5-C63989B1DD65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mefo.Orp.Backend.Data", "Mefo.Orp.Backend.Data\Mefo.Orp.Backend.Data.csproj", "{BE0C47B6-58B6-4549-B425-B473AE719280}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mefo.Orp.Backend.Tests", "Mefo.Orp.Backend.Tests\Mefo.Orp.Backend.Tests.csproj", "{A8748021-08C1-4868-B631-4EF0DFD74B16}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D4204010-D939-4102-AE67-843D16813163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4204010-D939-4102-AE67-843D16813163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4204010-D939-4102-AE67-843D16813163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4204010-D939-4102-AE67-843D16813163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE344F37-CDB1-4827-ABA3-753DFF186354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE344F37-CDB1-4827-ABA3-753DFF186354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE344F37-CDB1-4827-ABA3-753DFF186354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE344F37-CDB1-4827-ABA3-753DFF186354}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62897DE-7F45-4502-B6E5-C63989B1DD65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62897DE-7F45-4502-B6E5-C63989B1DD65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62897DE-7F45-4502-B6E5-C63989B1DD65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62897DE-7F45-4502-B6E5-C63989B1DD65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0C47B6-58B6-4549-B425-B473AE719280}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0C47B6-58B6-4549-B425-B473AE719280}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0C47B6-58B6-4549-B425-B473AE719280}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0C47B6-58B6-4549-B425-B473AE719280}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8748021-08C1-4868-B631-4EF0DFD74B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8748021-08C1-4868-B631-4EF0DFD74B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8748021-08C1-4868-B631-4EF0DFD74B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8748021-08C1-4868-B631-4EF0DFD74B16}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
