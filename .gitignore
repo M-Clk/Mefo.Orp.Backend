@@ -1,31 +1,76 @@
-# Ignore build output
+# .NET Core
 bin/
 obj/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.config
+*.log
 
-# Ignore user-specific files
+# ASP.NET Core
+wwwroot/
 *.user
-*.suo
-*.userosscache
-*.sln.docstates
-.vscode/
-.idea/
+*.dbmdl
+*.bak
 
-# Ignore .NET-specific files
-*.vs/
-*.nupkg
-*.snupkg
-
-# Ignore Rider and ReSharper files
+# Rider
 .idea/
 *.sln.iml
-*.sln.ide
 
-# Ignore Visual Studio Code settings folder
+# Visual Studio
 .vscode/
+*.suo
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.ncb
+*.sdf
+*.opensdf
+*.vssscc
+*.csproj.user
+*.csproj.nuget.g.props
+*.csproj.nuget.g.targets
 
-# Ignore OS-specific files
+# NuGet
+*.nupkg
+*.snupkg
+*.nuspec
+
+# Node.js
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# MacOS
 .DS_Store
-Thumbs.db
 
-# Ignore any other IDE-specific settings
-.vscode/
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Docker
+docker-compose.override.yml
+docker-compose.local.yml
+*.dockerignore
+
+# Local configuration files
+*.local
+
+# Build results
+*.tgz
+*.zip
+*.tar.gz
+
+# Azure DevOps
+*.tfstate
+*.tfstate.*
