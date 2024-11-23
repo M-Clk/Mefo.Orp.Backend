@@ -1,4 +1,5 @@
 ﻿using Mefo.Orp.Backend.Models.Entities.Abstracts;
+using Mefo.Orp.Backend.Models.Enums;
 using Microsoft.AspNetCore.Identity;
 
 namespace Mefo.Orp.Backend.Models.Entities;
@@ -9,6 +10,8 @@ public class OrpUser : IdentityUser<int>, ISoftDeletableEntity
     public DateTime? UpdatedDate { get; set; }
     public bool IsDeleted { get; set; }
     public void MarkDeleted() => IsDeleted = true;
+
+    public UserAuthority Authority { get; set; }
 
     public void MarkUpdated() => UpdatedDate = DateTime.Now;
     public string Name { get; set; }
