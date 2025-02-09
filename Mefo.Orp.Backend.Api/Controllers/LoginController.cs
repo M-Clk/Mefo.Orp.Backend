@@ -18,7 +18,8 @@ public class LoginController : ControllerBase
     private readonly SignInManager<OrpUser> _signInManager;
     private readonly IConfiguration _configuration;
 
-    public LoginController(UserManager<OrpUser> userManager, SignInManager<OrpUser> signInManager, IConfiguration configuration)
+    public LoginController(UserManager<OrpUser> userManager, SignInManager<OrpUser> signInManager,
+        IConfiguration configuration)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -48,28 +49,30 @@ public class LoginController : ControllerBase
         return BadRequest(result.Errors);
     }
 
-   [HttpPost("resetMyPassword")]
-   [Authorize]
+    [HttpPost("resetMyPassword")]
+    [Authorize]
     public async Task<IActionResult>? ResetMyPassword([FromBody] ResetPasswordDto resetPasswordDto)
     {
-        if(User?.Identity?.Name == null)
+        if (User?.Identity?.Name == null)
             return BadRequest("User not found");
-        
+
         var user = await _userManager.FindByNameAsync(User.Identity.Name);
         if (user == null)
         {
             return BadRequest("User not found");
         }
-        var token = await _userManager.GeneratePasswordResetTokenAsync(user); //only for testing. password reset token should be provided
+
+        var token = await _userManager
+            .GeneratePasswordResetTokenAsync(user); //only for testing. password reset token should be provided
         var resetPassResult = await _userManager.ResetPasswordAsync(user, token, resetPasswordDto.NewPassword);
         if (!resetPassResult.Succeeded)
         {
             return BadRequest(resetPassResult.Errors);
         }
-    
+
         return Ok("Password has been reset successfully");
     }
-    
+
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
@@ -79,7 +82,9 @@ public class LoginController : ControllerBase
             return Unauthorized(new { message = "Invalid username or password" });
         }
 
-        var result = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, lockoutOnFailure: true);
+        var result =
+            await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false,
+                lockoutOnFailure: true);
 
         if (result.Succeeded)
         {
@@ -87,29 +92,35 @@ public class LoginController : ControllerBase
             return Ok(new { token });
         }
 
-        return Unauthorized(new { message = result.IsLockedOut ? "User account locked out" : "Invalid username or password" });
+        return Unauthorized(new
+            { message = result.IsLockedOut ? "User account locked out" : "Invalid username or password" });
     }
-    
+
     private string GenerateJwtToken(string username)
     {
-        var claims = new[]
+        var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Name, username)
+            new (JwtRegisteredClaimNames.Sub, username),
+            new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new (ClaimTypes.Name, username)
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
-            expires: DateTime.Now.AddMinutes(30),
-            signingCredentials: creds);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(claims),
+            Expires = DateTime.Now.AddMinutes(30),
+            SigningCredentials = creds,
+            Issuer = _configuration["Jwt:Issuer"],
+            Audience = _configuration["Jwt:Audience"]
+        };
 
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
     }
 }
 
